@@ -22,6 +22,7 @@ export const VueApp: FC = () => {
     return (
         <div id={VUE_APP_ID} hidden>
             <div id="wrapper" />
+            <h1>Hello! VueApp</h1>
         </div>
     );
 };
