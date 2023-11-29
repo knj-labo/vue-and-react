@@ -1,15 +1,16 @@
 import React, { lazy } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-const Editor = lazy(() => import("./components/Editor"));
-import { Publish } from "./components/Publish";
+const Editor = lazy(() => import("./components/Editor.tsx"));
+import { Publish } from "./components/Publish.tsx";
 
-import { VueApp } from "./components/VueApp";
-import { VueAppPage } from "./components/VueAppPage";
-import { VueRouterHook } from "./VueRouterHook";
+import { VueApp } from "./components/VueApp.tsx";
+import { VueAppPage } from "./components/VueAppPage.tsx";
+import { VueRouterHook } from "./VueRouterHook.ts";
 
 const App: React.FC = () => {
     return (
+        <>
         <Router>
             <Routes>
                 <Route path="/" element={<Editor />} />
@@ -17,8 +18,9 @@ const App: React.FC = () => {
                  <Route path="/vue-page" element={<VueAppPage />} />
             </Routes>
             <VueRouterHook />
-            <VueApp />
         </Router>
+        <VueApp />
+        </>
     );
 };
 

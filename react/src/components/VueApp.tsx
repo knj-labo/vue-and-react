@@ -1,6 +1,6 @@
 import { useEffect, FC } from 'react';
 
-import { VUE_APP_ID } from './vue-app-id';
+import { VUE_APP_ID } from './vue-app-id.ts';
 
 /**
  * vuejs を読み込むための page component.

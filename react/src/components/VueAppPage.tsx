@@ -1,6 +1,6 @@
 import { useEffect, FC } from 'react';
 
-import { VUE_APP_ID } from './vue-app-id';
+import { VUE_APP_ID } from './vue-app-id.ts';
 
 /**
  * vue-app の表示非表示を制御するための page component.
