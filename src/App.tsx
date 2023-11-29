@@ -4,9 +4,9 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 const Editor = lazy(() => import("./components/Editor"));
 import { Publish } from "./components/Publish";
 
+import { VueApp } from "./components/VueApp";
 // Uncomment these imports as needed
 // import VueRouterHook from "./VueRouterHook";
-// import { VueAppPage, VueApp } from "./components/VueApp";
 // const Editor = lazy(() => import("./components/Editor"));
 
 const App: React.FC = () => {
@@ -18,7 +18,7 @@ const App: React.FC = () => {
                 {/* Uncomment these lines as needed */}
                 {/* <Route path="/vue-page" element={<VueAppPage />} /> */}
                 {/* <VueRouterHook /> */}
-                {/* <VueApp /> */}
+                 <VueApp />
             </Routes>
         </Router>
     );
