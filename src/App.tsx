@@ -5,9 +5,9 @@ const Editor = lazy(() => import("./components/Editor"));
 import { Publish } from "./components/Publish";
 
 import { VueApp } from "./components/VueApp";
+import { VueAppPage } from "./components/VueAppPage";
 // Uncomment these imports as needed
 // import VueRouterHook from "./VueRouterHook";
-// const Editor = lazy(() => import("./components/Editor"));
 
 const App: React.FC = () => {
     return (
@@ -16,10 +16,10 @@ const App: React.FC = () => {
                 <Route path="/" element={<Editor />} />
                 <Route path="/publish" element={<Publish />} />
                 {/* Uncomment these lines as needed */}
-                {/* <Route path="/vue-page" element={<VueAppPage />} /> */}
+                 <Route path="/vue-page" element={<VueAppPage />} />
                 {/* <VueRouterHook /> */}
-                 <VueApp />
             </Routes>
+            <VueApp />
         </Router>
     );
 };
