@@ -5,7 +5,6 @@ const Editor = lazy(() => import("./components/Editor"));
 import { Publish } from "./components/Publish";
 
 // Uncomment these imports as needed
-// import { lazy } from "react";
 // import VueRouterHook from "./VueRouterHook";
 // import { VueAppPage, VueApp } from "./components/VueApp";
 // const Editor = lazy(() => import("./components/Editor"));
