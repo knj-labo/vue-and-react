@@ -1,7 +1,7 @@
-import React from "react";
+import React, { lazy } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import { Editor } from "./components/Editor";
+const Editor = lazy(() => import("./components/Editor"));
 import { Publish } from "./components/Publish";
 
 // Uncomment these imports as needed
