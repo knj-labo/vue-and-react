@@ -1,5 +1,8 @@
 import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
+import { Editor } from "./components/Editor";
+import { Publish } from "./components/Publish";
 
 // Uncomment these imports as needed
 // import { lazy } from "react";
@@ -9,13 +12,16 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 const App: React.FC = () => {
     return (
-            <Router>
+        <Router>
+            <Routes>
+                <Route path="/" element={<Editor />} />
+                <Route path="/publish" element={<Publish />} />
                 {/* Uncomment these lines as needed */}
-                {/* <Route exact path="/react-editor" component={Editor} /> */}
-                {/* <Route exact path="/vue-page" component={VueAppPage} /> */}
+                {/* <Route path="/vue-page" element={<VueAppPage />} /> */}
                 {/* <VueRouterHook /> */}
                 {/* <VueApp /> */}
-            </Router>
+            </Routes>
+        </Router>
     );
 };
 
