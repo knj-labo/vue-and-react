@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>About</h1>
+    <h2>Vue</h2>
     <vue-button msg="About Page"/>
     <nav>
       <router-link to="/">Home</router-link> |
