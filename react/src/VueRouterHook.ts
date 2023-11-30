@@ -15,7 +15,7 @@ type VueRouterDetail =
 
 type ReactRouterDetail = { type: 'transition-to'; location: string };
 
-export const VueRouterHook =(): null => {
+export const VueRouterHook = (): null => {
     const navigate = useNavigate();
 
     const onGoHook = useCallback(
