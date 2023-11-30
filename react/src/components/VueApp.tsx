@@ -7,22 +7,33 @@ import { VUE_APP_ID } from './vue-app-id.ts';
  */
 export const VueApp: FC = () => {
     useEffect(() => {
-        const builderUrl = '/vue-app.js';
-        const script = document.createElement('script');
-        script.src = builderUrl;
-        script.setAttribute('id', 'vue-app');
-        document.body.appendChild(script);
+        // app.js は vuejs 本体より先に読み込む必要がある
+        const appPath = '/dist/app.js';
+        const appScript = document.createElement('script');
+        appScript.src = appPath;
+        appScript.setAttribute('id', 'vue-script');
+        document.body.appendChild(appScript);
 
+        // chunk-vendors.js は vuejs 本体より先に読み込む必要がある
+        const chunkPath = '/dist/chunk-vendors.js';
+        const chunkScript = document.createElement('script');
+        chunkScript.src = chunkPath;
+        chunkScript.setAttribute('id', 'chunk-script');
+        document.body.appendChild(chunkScript);
+
+        // Clean up
         return () => {
-            const script = document.querySelector('#vue-app');
-            if (script) script.remove();
+            const appScript = document.querySelector('#vue-script');
+            if(appScript) appScript.remove();
+
+            const chunkScript = document.querySelector('#chunk-script');
+            if(chunkScript) chunkScript.remove();
         };
     }, []);
 
     return (
         <div id={VUE_APP_ID} hidden>
-            <div id="wrapper" />
-            <h1>Hello! VueApp</h1>
+            <div id="vue-app" />
         </div>
     );
 };
