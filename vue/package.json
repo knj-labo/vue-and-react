@@ -1,0 +1,17 @@
+{
+  "name": "n",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "copy-webpack-plugin": "5",
+    "webpack": "4",
+    "webpack-cli": "3",
+    "webpack-dev-server": "3"
+  }
+}
