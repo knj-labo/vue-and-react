@@ -31,6 +31,7 @@ const router = new VueRouter({
   routes
 })
 
+const REACT_ROUTER_HISTORY = 'REACT_ROUTER_HISTORY';
 function hackHistoryInVueRouter() {
   // routing が確定する前に、console.log で history が表示されるようにする
   vueRouter.beforeEach((_to, _from, next) => {
@@ -43,5 +44,28 @@ function hackHistoryInVueRouter() {
     console.log('afterEach');
     console.log('[Vue] Vue Router の history: ', history);
   });
+
+  // Vue Router の history に React Router の history を設定する
+  const handleReactRouterEvent = (event) => {
+    console.log('[Vue] React Router の history が変更されました: ', event);
+    vueRouter.history.transitionTo(
+        route => {
+          console.log('[Vue] Vue Router が変更されました: ', route);
+        },
+        (err) => {
+          if (err) {
+            console.error(err);
+          }
+        },
+    );
+  };
+
+  // REACT_ROUTER_HISTORY イベントを受け取ったら、handleReactRouterEvent を実行する
+  window.addEventListener(REACT_ROUTER_HISTORY, handleReactRouterEvent);
+
+  // URL の初期化
+  vueRouter.history.getCurrentLocation = () => {
+    return window.location.pathname + window.location.search + window.location.hash;
+  }
 }
 export default router
