@@ -31,20 +31,17 @@ const router = new VueRouter({
   routes
 })
 
-// React Router が変更されたらカスタムイベントを発火
-window.addEventListener('react-custom-event', (e) => {
-  if (e.detail && router.currentRoute.path !== e.detail) {
-    console.log('react-custom-event', e.detail)
-    router.push(e.detail);
-  }
-});
-
-// Vue Router が変更されたらカスタムイベントを発火
-router.afterEach((to) => {
-  // ルートが変更された後にカスタムイベントを発火
-  if (to.path === '/about') {
-    window.dispatchEvent(new CustomEvent('vue-custom-event', { detail: '/about' }));
-  }
-});
-
+function hackHistoryInVueRouter() {
+  // routing が確定する前に、console.log で history が表示されるようにする
+  vueRouter.beforeEach((_to, _from, next) => {
+    console.log('beforeEach');
+    console.log('[Vue] Vue Router の history: ', history);
+    next();
+  });
+  // routing が確定した後に、console.log で history が表示されるようにする
+  vueRouter.afterEach(() => {
+    console.log('afterEach');
+    console.log('[Vue] Vue Router の history: ', history);
+  });
+}
 export default router
