@@ -31,15 +31,20 @@ const router = new VueRouter({
   routes
 })
 
-// React Routerからのナビゲーションを処理するメソッド
-window.vueRouterSync = (navigate) => {
-  router.beforeEach((to, from, next) => {
-    // React RouterのURLに同期する
-    if (window.location.pathname !== to.path) {
-      navigate(to.path);
-    }
-    next();
-  });
-};
+// React Router が変更されたらカスタムイベントを発火
+window.addEventListener('react-custom-event', (e) => {
+  if (e.detail && router.currentRoute.path !== e.detail) {
+    console.log('react-custom-event', e.detail)
+    router.push(e.detail);
+  }
+});
+
+// Vue Router が変更されたらカスタムイベントを発火
+router.afterEach((to) => {
+  // ルートが変更された後にカスタムイベントを発火
+  if (to.path === '/about') {
+    window.dispatchEvent(new CustomEvent('vue-custom-event', { detail: '/about' }));
+  }
+});
 
 export default router
