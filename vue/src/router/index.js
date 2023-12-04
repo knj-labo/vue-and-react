@@ -32,7 +32,10 @@ const router = new VueRouter({
 })
 
 const REACT_ROUTER_HISTORY = 'REACT_ROUTER_HISTORY';
-function hackHistoryInVueRouter() {
+
+hackHistoryInVueRouter(router);
+
+function hackHistoryInVueRouter(vueRouter) {
   // routing が確定する前に、console.log で history が表示されるようにする
   vueRouter.beforeEach((_to, _from, next) => {
     console.log('beforeEach');
